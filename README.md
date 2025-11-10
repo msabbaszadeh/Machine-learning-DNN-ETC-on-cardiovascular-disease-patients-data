@@ -1,89 +1,142 @@
-Cardiovascular Disease Prediction using AI and Machine Learning
+---
 
-This project applies Artificial Intelligence (AI) and Machine Learning (ML) techniques to predict the likelihood of cardiovascular diseases based on lifestyle, health indicators, and demographic data. The goal is to use data-driven insights to identify key risk factors and develop a predictive model that supports preventive healthcare decisions.
+# 🫀 **Cardiovascular Disease Prediction using AI and Machine Learning**
 
-🧠 Project Overview
+This project leverages **Artificial Intelligence (AI)** and **Machine Learning (ML)** techniques to predict the likelihood of **cardiovascular diseases** based on lifestyle habits, medical history, and demographic data.
+The goal is to use **data-driven insights** to identify key health risk factors and build a **predictive model** for early prevention and better healthcare decisions.
 
-The dataset includes over 300,000 medical records with 19 health-related features such as BMI, age, alcohol consumption, exercise habits, diet, and chronic conditions.
-Through data preprocessing, feature encoding, normalization, and model training, the project compares Deep Learning (Neural Networks) and Classical Machine Learning algorithms to evaluate which performs best in predicting heart-related conditions.
+---
 
-⚙️ Key Features
+## 🧠 **Project Overview**
 
-Comprehensive Data Analysis: Cleaned, balanced, and visualized a large-scale cardiovascular dataset.
+The dataset includes over **300,000 medical records** with **19 features**, covering health indicators such as **BMI, Alcohol Consumption, Smoking History, Exercise Habits, Diet, and Age**.
 
-Feature Engineering: Converted categorical data into numerical form using Label Encoding and manually defined mappings for ordered variables like Age and Health Status.
+Through extensive **data cleaning**, **feature encoding**, **normalization**, and **model comparison**, the project evaluates both **Deep Learning (Neural Networks)** and **Classical Machine Learning (Extra Trees Classifier)** to determine the most effective prediction method.
 
-Data Normalization: Applied MinMaxScaler to improve model training stability and performance.
+---
 
-Model Comparison: Built and compared a Deep Neural Network (TensorFlow/Keras) and a Tree-Based Model (Extra Trees Classifier).
+## ⚙️ **Key Features**
 
-Feature Importance Analysis: Identified the most influential health and lifestyle factors contributing to cardiovascular disease risk.
+* **Comprehensive Data Processing** — cleaning, balancing, and visualizing a large-scale health dataset.
+* **Feature Encoding** — transformed categorical data into numerical form using **Label Encoding** and logical mappings.
+* **Normalization** — applied **MinMaxScaler** for better training performance and model convergence.
+* **Model Comparison** — evaluated a **Deep Neural Network (TensorFlow/Keras)** vs. **Extra Trees Classifier (Sklearn)**.
+* **Feature Importance Analysis** — identified which health and lifestyle features most strongly influence cardiovascular risks.
+* **Model Persistence** — saved the best-performing model as a **`.pkl` file** for deployment.
 
-Model Persistence: Saved the best-performing model using Joblib for future deployment.
+---
 
-🧩 Data Processing Workflow
+## 🧩 **Data Processing Workflow**
 
-Data Cleaning:
+1. **Data Cleaning**
 
-Removed duplicates and verified no missing values.
+   * Removed duplicates (80 entries).
+   * Verified there were **no missing values**.
+   * Balanced target classes to ensure fair training.
 
-Balanced the dataset to ensure fair representation across classes.
+2. **Encoding**
 
-Encoding:
+   * Applied **Label Encoding** for categorical features.
+   * Maintained **logical order** for features like *Age Category* and *General Health*.
 
-Used Label Encoding to transform text attributes into numerical values.
+3. **Normalization**
 
-Preserved logical order for features like Age Category and General Health.
+   * Used **MinMaxScaler** to scale values between 0 and 1.
 
-Normalization:
+4. **Data Splitting**
 
-Scaled all numerical features between 0 and 1 for optimal neural network performance.
+   * **Training Set:** 75%
+   * **Testing Set:** 25%
 
-Data Splitting:
+---
 
-Split into Training (75%) and Testing (25%) sets.
+## 🤖 **Model Development**
 
-🤖 Model Development
-Deep Learning Model (TensorFlow/Keras)
+### 🧬 **Deep Learning Model (TensorFlow/Keras)**
 
-A fully connected neural network (Feed-Forward Neural Network) was designed with multiple dense layers using ReLU, SELU, and LeakyReLU activation functions.
+* **Architecture:** Multi-layer feed-forward neural network (Dense Layers)
+* **Activations:** LeakyReLU, SELU, ReLU
+* **Optimizer:** Adam
+* **Loss Function:** Sparse Categorical Crossentropy
+* **Early Stopping:** Enabled to prevent overfitting
+* **Test Accuracy:** **≈ 71.9%**
 
-Optimizer: Adam
+---
 
-Loss Function: Sparse Categorical Crossentropy
+### 🌲 **Machine Learning Model (Extra Trees Classifier)**
 
-Accuracy on Test Data: ~71%
+* **Algorithm:** Ensemble Tree-Based Classifier
+* **Advantages:** Fast, interpretable, robust to noise
+* **Test Accuracy:** **≈ 82.4%**
+* **Best Performing Model:** ✅ **Extra Trees Classifier**
 
-Machine Learning Model (Extra Trees Classifier)
+---
 
-A tree-based ensemble algorithm was trained and evaluated on the same dataset for comparison.
+## 📊 **Feature Importance Analysis**
 
-Accuracy on Test Data: ~82%
+The **Extra Trees Classifier** identified which features contribute most to predicting **cardiovascular disease risk**:
 
-Best Performing Model: Extra Trees Classifier
+| Rank | Feature                          | Importance |
+| ---- | -------------------------------- | ---------- |
+| 🥇 1 | **Green_Vegetables_Consumption** | **0.1733** |
+| 🥈 2 | **Fruit_Consumption**            | **0.1022** |
+| 🥉 3 | **Alcohol_Consumption**          | **0.0968** |
+| 4    | Smoking_History                  | 0.0874     |
+| 5    | BMI                              | 0.0872     |
+| 6    | Weight_(kg)                      | 0.0872     |
+| 7    | Height_(cm)                      | 0.0817     |
+| 8    | Age_Category                     | 0.0733     |
+| 9    | Sex                              | 0.0608     |
+| 10   | Arthritis                        | 0.0304     |
 
-📊 Feature Importance Insights
+🩺 **Insight:** Lifestyle factors such as **diet**, **alcohol intake**, and **smoking habits** are the most critical predictors of cardiovascular disease.
 
-The Extra Trees model provided interpretability through feature importance scores.
-Top influencing factors associated with cardiovascular disease:
+---
 
-Green Vegetables Consumption 🥦
+## 🧾 **Results Summary**
 
-Fruit Consumption 🍎
+| **Model**              | **Type**               | **Test Accuracy** | **Key Strength**                         |
+| ---------------------- | ---------------------- | ----------------- | ---------------------------------------- |
+| Deep Learning          | Neural Network (Keras) | **71.9%**         | Learns complex nonlinear health patterns |
+| Extra Trees Classifier | Ensemble ML            | **82.4% ✅**       | Higher accuracy and interpretability     |
 
-Alcohol Consumption 🍷
+**✅ The Extra Trees Classifier outperformed the Deep Neural Network by ~10%.**
+This demonstrates that **classical ML models** can be more effective for structured health data than deep learning.
 
-Smoking History 🚬
+---
 
-Body Mass Index (BMI) ⚖️
+## 💾 **Model Deployment**
 
-Weight and Height
+The best-performing model was saved for future use:
 
-Age and Gender
+* **File Name:** `model.pkl`
+* **Format:** Joblib serialized model
+* **Use Case:** Ready for real-time predictions, healthcare dashboards, or clinical AI systems
 
-These results emphasize that lifestyle choices—especially diet and alcohol use—have the strongest impact on cardiovascular health.
+---
 
-🩺 Results Summary
-Model	Type	Test Accuracy	Key Strength
-Deep Learning	Neural Network (Keras)	71.9%	Learns complex nonlinear patterns
-Extra Trees Classifier	Ensemble ML	82.4%	High accuracy and feature interpretability
+## 🔍 **Related Keywords**
+
+**AI in Healthcare**, **Machine Learning for Heart Disease**, **Cardiovascular Disease Prediction**, **Deep Learning Health Analytics**, **Feature Importance Analysis**, **Preventive Health AI**, **TensorFlow Classification Model**, **Medical Data Science Project**, **Python Machine Learning**, **Healthcare Predictive Modeling**, **AI for Public Health**, **Cardio Risk Prediction with ML**
+
+---
+
+## 👨‍💻 **Author**
+
+**Developed by:** *Mohammad Sadegh Abbaszadeh*
+💼 *Data Scientist | AI & Machine Learning Enthusiast*
+🔗 GitHub: [github.com/msabbaszadeh](https://github.com/msabbaszadeh)
+💬 *"Stay healthy, eat greens, avoid alcohol — the data proves it!"*
+
+---
+
+## 🧩 **Conclusion**
+
+**✅ Final Insights:**
+
+* The **Extra Trees Classifier** achieved **82.4% accuracy**, outperforming the neural network.
+* **Lifestyle choices** — such as **diet**, **alcohol consumption**, and **smoking** — are **the most influential factors** in predicting cardiovascular disease.
+* **Machine Learning can effectively predict health risks** and provide actionable insights for preventive healthcare.
+* **Healthy habits = Lower heart disease risk.**
+
+---
